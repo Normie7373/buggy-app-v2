@@ -17,8 +17,14 @@ jobs:
           python-version: '3.10'
 
       - name: Run code and capture error
+        id: run_code
         run: |
-          python app.py > output.log 2>&1 || true
+          python app.py > output.log 2>&1
+        continue-on-error: true
+
+      - name: Show log (debug)
+        run: |
+          cat output.log
 
       - name: Send error to n8n
         run: |
