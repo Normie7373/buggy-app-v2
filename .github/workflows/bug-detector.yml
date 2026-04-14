@@ -30,6 +30,6 @@ jobs:
         run: |
           ERROR=$(cat output.log | head -n 20 | sed 's/"/\\"/g')
           echo "Sending: $ERROR"
-          curl -v -X POST https://crayon-employer-wasting.ngrok-free.dev/webhook/bug-detector \
+          curl -v -X POST http://localhost:5678/webhook-test/bug-detector \
           -H "Content-Type: application/json" \
           -d "{\"error\":\"$ERROR\"}"
